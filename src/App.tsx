@@ -11,7 +11,7 @@ function App() {
       </header>
     </div>
       <PokemonCardList />
-    </div>
+    </div>    
   );
 }
 

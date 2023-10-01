@@ -7,7 +7,7 @@ type PokemonCardProps = {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
-  const [imgUrl, setImgUrl] = useState<string | null>(null);
+  const [imgUrl, setImgUrl] = useState<string>();
 
   useEffect(() => {
     fetch(url)
