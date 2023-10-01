@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './PokemonStyle.css';
-import { type } from '@testing-library/user-event/dist/type';
 
 type PokemonCardProps = {
   name: string;
@@ -8,32 +7,31 @@ type PokemonCardProps = {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ name, url }) => {
-  const [pokemonData, setPokemonData] = useState<any>(null);
+  const [imgUrl, setImgUrl] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setPokemonData(data);
+        const { sprites } = data;
+        const frontDefaultImgUrl = sprites.front_default;
+        setImgUrl(frontDefaultImgUrl);
       })
       .catch((error) => {
-        console.error('Error fetching Pokémon details:', error);
+        console.error(error);
       });
-  }, [url]);
-
-  if (!pokemonData) {
-    return <div>Loading...</div>;
-  }
-
-  const { sprites } = pokemonData;
+  }, [name, url]);
 
   return (
-    <div className="pokemon-card">
-      <h2>{name}</h2>
-      <img src={sprites.front_default} alt={name} />
-    </div>
+    <a href={url} target="_blank" className="pokemon-card">
+      <p>{name}</p>
+      {imgUrl ? (
+        <img src={imgUrl} alt={name} />
+      ) : (
+        <div>Loading...</div>
+      )}
+    </a>
   );
 };
 
 export default PokemonCard;
-      //<p>Types: {types.map((type: any) => type.type.name).join(', ')}</p>

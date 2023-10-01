@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
 import PokemonCardList from './PokemonCardList';
 import './PokemonStyle.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Pokémon Cards</h1>
+      <div className="header-container">
+      <header className="main-header">
+        <h2>Pokémon Cards</h2>
+      </header>
+    </div>
       <PokemonCardList />
     </div>
   );
