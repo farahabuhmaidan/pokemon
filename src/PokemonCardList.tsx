@@ -53,7 +53,7 @@ const PokemonCardList: React.FC = () => {
         onPageChange={handlePageClick}
         containerClassName={'pagination'}
         activeClassName={'active'}
-        pageClassName={'pagination-item'} // Add a class for each page number
+        pageClassName={'pagination-item'}
       />
 
     </>
